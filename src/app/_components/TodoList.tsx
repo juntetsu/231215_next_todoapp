@@ -1,17 +1,19 @@
-import React from 'react'
+import Todo from "@/app/_components/Todo";
+import { TodoType } from "@/app/_lib/types";
+import React from "react";
 
-const TodoList = () => {
-  return (
-    <ul className="space-y-3">
-      <li className="flex justify-between p-4 bg-white border-l-4 border-blue-500 rounded shadow">
-        <span>散歩</span>
-        <div>
-          <button className='text-green-500 mr-5'>Edit</button>
-          <button className='text-red-500'>Delete</button>
-        </div>
-      </li>
-    </ul>
-  );
+interface TodoListProps {
+  todos: TodoType[];
 }
 
-export default TodoList
+const TodoList = ({ todos }: TodoListProps) => {
+  return (
+    <ul className="space-y-3">
+      {todos.map((todo) => (
+        <Todo key={todo.id} todo={todo} />
+      ))}
+    </ul>
+  );
+};
+
+export default TodoList;
