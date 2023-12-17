@@ -24,3 +24,20 @@ export const addTodo = async (todo: TodoType): Promise<TodoType> => {
 
   return newTodo;
 };
+
+// Todoを編集する関数
+export const editTodo = async (
+  id: string,
+  newText: string
+): Promise<TodoType> => {
+  const res = await fetch(`http://localhost:3001/tasks/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ text: newText }),
+  });
+  const updatedTodo = res.json();
+
+  return updatedTodo;
+};
