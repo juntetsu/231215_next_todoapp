@@ -41,3 +41,16 @@ export const editTodo = async (
 
   return updatedTodo;
 };
+
+// Todoを削除する関数
+export const deleteToto = async (id: string): Promise<TodoType> => {
+  const res = await fetch(`http://localhost:3001/tasks/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    }
+  });
+  const deletedTodo = res.json();
+
+  return deletedTodo;
+}
